@@ -39,3 +39,37 @@
 
 # debug information files
 *.dwo
+
+# Compiled binaries
+*.out
+*.exe
+*.o
+*.so
+*.a
+*.obj
+*.dll
+
+# Build and debug folders
+/build/
+bin/
+obj/
+
+# Docker files
+*.log
+*.pid
+*.tmp
+
+# Local environment files
+.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+
+# Container data
+*.tar
+*.img
