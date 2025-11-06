@@ -1,0 +1,24 @@
+services:
+  udpechoserver:
+    build: ./UDPEchoServer
+    container_name: udpechoserver
+    env_file: .env
+    networks:
+      - c-lang-network
+    ports:
+      - "${server_testing_port}:${server_port}"
+    command: ["./UDPEchoServer", "-p", "${server_port}"]
+
+  udpechoclient:
+    build: ./UDPEchoClient
+    container_name: udpechoclient
+    env_file: .env
+    networks:
+      - c-lang-network
+    depends_on:
+      - udpechoserver
+    command: ["./UDPEchoClient", "-h", "udpechoserver", "-p", "${server_port}", "-f", "Testfiles/complex-file-1.dat"]
+
+networks:
+  c-lang-network:
+    driver: bridge
