@@ -17,7 +17,8 @@ services:
       - c-lang-network
     depends_on:
       - udpechoserver
-    command: ["./UDPEchoClient", "-h", "udpechoserver", "-p", "${server_port}", "-f", "Testfiles/complex-file-1.dat"]
+    command: ["./UDPEchoClient", "-h", "udpechoserver", "-p", "${server_port}", "-f", 
+              "Testfiles/complex-file-1.dat"]
 
 networks:
   c-lang-network:
