@@ -105,7 +105,10 @@ UDP is a connectionless protocol, so the program includes simple handling logic:
 * If the server does not respond, client times out.
 * Missing “FILE_END” message is detected by the server.
 
-This fulfills the requirement *“some idea of transfer errors implementation.”*
+Because UDP gives no delivery guarantees, the client and server handle the
+gaps themselves: the client reports failed sends and times out if the server
+goes quiet, and the server detects a transfer that never sent its FILE_END
+marker.
 
 ---
 
@@ -129,6 +132,15 @@ Expected output:
 ```
 
 ✅ **No memory leaks detected**
+
+---
+
+## Tech Stack
+
+- **Language:** C++ (POSIX sockets, `AF_INET` / `SOCK_DGRAM`)
+- **Build:** Makefile, g++
+- **Containers:** Docker, Docker Compose
+- **Testing:** Valgrind (no leaks), Ubuntu 24.04
 
 ---
 
